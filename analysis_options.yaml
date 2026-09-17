@@ -1,0 +1,19 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - "lib/core/l10n/generated/**"
+    - build/**
+    - android/**
+    - ios/**
+  language:
+    strict-casts: true
+
+linter:
+  rules:
+    - always_declare_return_types
+    - avoid_print
+    - directives_ordering
+    - prefer_single_quotes
+    - unawaited_futures
+    - use_super_parameters
