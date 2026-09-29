@@ -37,6 +37,22 @@ class OfflineDatabase extends _$OfflineDatabase {
   @override
   int get schemaVersion => 1;
 
+  /// This database is a fully-replaceable read cache (see `SyncEngine`),
+  /// never a source of truth - on any future version bump, drop and
+  /// recreate every table instead of writing per-version column migrations.
+  /// Without this, Drift's default behavior is to throw on open when
+  /// `schemaVersion` increases, crashing existing installs before
+  /// `SyncEngine` ever gets a chance to repopulate the cache.
+  @override
+  MigrationStrategy get migration => MigrationStrategy(
+    onUpgrade: (Migrator m, int from, int to) async {
+      for (final table in allTables) {
+        await m.deleteTable(table.actualTableName);
+      }
+      await m.createAll();
+    },
+  );
+
   static QueryExecutor _openConnection() => driftDatabase(name: 'upazila_offline');
 }
 

@@ -1,0 +1,7 @@
+#include "Debug.xcconfig"
+
+// iOS "dev" flavor - mirrors android/app/build.gradle.kts's dev product
+// flavor (applicationIdSuffix ".dev", "Upazila Dev" launcher label) so the
+// three environments can be installed side by side on a device/simulator.
+PRODUCT_BUNDLE_IDENTIFIER = com.upazila.upazilaApp.dev
+APP_DISPLAY_NAME = Upazila App Dev

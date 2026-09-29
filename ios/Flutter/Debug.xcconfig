@@ -1,1 +1,6 @@
 #include "Generated.xcconfig"
+
+// Default/base display name - overridden per-flavor by Debug-dev.xcconfig /
+// Debug-staging.xcconfig. Left as-is here so this config still works
+// unmodified if selected directly (mirrors Android's unsuffixed "prod" flavor).
+APP_DISPLAY_NAME = Upazila App

@@ -1,0 +1,4 @@
+// Mirrors the base project's Profile configuration, which reuses
+// Release.xcconfig (see Runner.xcodeproj/project.pbxproj) rather than
+// having its own file.
+#include "Release-staging.xcconfig"

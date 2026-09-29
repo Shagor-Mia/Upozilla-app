@@ -1,0 +1,8 @@
+#include "Release.xcconfig"
+
+// iOS "staging" flavor - mirrors android/app/build.gradle.kts's staging
+// product flavor (applicationIdSuffix ".staging", "Upazila Staging"
+// launcher label) so the three environments can be installed side by side
+// on a device/simulator.
+PRODUCT_BUNDLE_IDENTIFIER = com.upazila.upazilaApp.staging
+APP_DISPLAY_NAME = Upazila App Staging
