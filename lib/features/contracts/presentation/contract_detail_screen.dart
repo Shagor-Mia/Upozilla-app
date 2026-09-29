@@ -8,6 +8,7 @@ import '../../../core/utils/formatters.dart';
 import '../../../core/widgets/async_value_widget.dart';
 import '../../../core/widgets/empty_state.dart';
 import '../../../core/widgets/error_state.dart';
+import '../../../core/widgets/online_only_gate.dart';
 import '../../../core/widgets/remote_image.dart';
 import '../../../core/widgets/snackbars.dart';
 import '../data/contracts_repository.dart';
@@ -48,7 +49,10 @@ class ContractDetailScreen extends ConsumerWidget {
                   ],
                 ),
         ),
-        body: _buildBody(context, ref, state, contract, currentUserId),
+        // Contracts are private/user-scoped and API-only (Section:
+        // offline-first plan) - gate the whole screen instead of a generic
+        // error on load, mirroring marketplace/messaging/ai_chat.
+        body: OnlineOnlyGate(child: _buildBody(context, ref, state, contract, currentUserId)),
       ),
     );
   }
